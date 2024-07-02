@@ -22,3 +22,19 @@ select customer_name,car_name from car_sales where car_name='Tesla Model 3' and 
 
 select max(price) from car_sales where city ='Ericaport'
 
+select * from car_sales;
+
+select customer_name,car_name,miles_driven from car_sales 
+group by customer_name,car_name,car_sales,miles_driven 
+having car_name='Tesla Model 3' and miles_driven >25000 
+order by car_sales DESC limit 7;
+
+select * , CASE
+             WHEN miles_driven < 30000 THEN 'tier 1'
+             WHEN miles_driven > 80000 then 'tier 2'
+             ELSE 'tier bleh'
+             END  As "Car quality"
+From car_sales where availability = true
+order by miles_driven DESC
+
+
